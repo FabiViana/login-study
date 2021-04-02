@@ -1,3 +1,16 @@
+:root {
+  --input-linear: linear-gradient(120deg, #E75590, #00C2CB);
+  --input-error: red;
+  --button-linear: linear-gradient(120deg, #E75590, #00C2CB, #f75590);
+  --button-disabled: #acacac;
+  --button-success: rgb(18, 151, 107);
+  --white: #fff;
+  --black: #303030;
+  --gray: #929292;
+  --light-grey: #cfcfcf;
+  --border-height: 1px;
+}
+
 
 body {
   margin: 0px;
@@ -7,7 +20,7 @@ body {
 
 .login {
   height: 100vh;
-  background: linear-gradient(120deg, #E75590, #00C2CB);
+  background: var(--input-linear);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,7 +29,7 @@ body {
 .login__container {
   min-height: 400px;
   width: 300px;
-  background-color: #ffffff;
+  background-color: var( --white);
   box-sizing: border-box;
   padding: 32px;
   border-radius: 8px;
@@ -27,7 +40,7 @@ body {
 
 .login__title {
   margin-bottom: 32px;
-  color: #303030;
+  color: var(--black);
 }
 
 .login__form {
@@ -48,41 +61,72 @@ body {
 }
 
 .login__input-border {
-  height: 1px;
+  height: var(--border-height);
   width: 100%;
   margin-bottom: 16px;
-  background-color: #cfcfcf;
+  background-color: var(--light-grey);
   transition: .3s ease-in-out;
 }
 
 .login__input-border::after {
   content: '';
   display: block;
-  height: 1px;
+  height: var(--border-height);
   width: 0;
   margin-bottom: 16px;
-  background: linear-gradient(120deg, #E75590, #00C2CB);
+  background: var(--input-linear);
   transition: .3s ease-in-out;
 }
+
+.login__input:focus + .login__input-border::after {
+  width: 100%;
+}
+
+.login__input-border.error {
+  background: var(--input-error);
+}
+
+.login__input-border.error::after {
+  background: var(--input-error);
+}
+
+
 
 .login__submit {
   height: 48px;
   width: 100%;
   outline: none;
-  background: linear-gradient(120deg, #E75590, #00C2CB);
+  background: var(--button-linear);
   background-size: 200%;
   margin-bottom: 32px;
   font-size: 16px;
   font-weight: bold;
   border: unset;
   border-radius: 4px;
-  color: #ffffff;
+  color: var( --white);
   cursor: pointer;
   transition: .5s ease-in-out;
 }
 
+.login__submit:disabled {
+  background: var(--button-disabled);
+  cursor: not-allowed;
+}
+
+.login__submit:hover {
+  background-position: right;
+}
+
+.login__submit.error {
+  background: var(--input-error);
+}
+
+.login__submit.success {
+  background: var(--button-success);
+}
+
 .login__reset {
   font-size: 12px;
-  color: #929292;
+  color: var(--gray);
   text-decoration: none;
 }
